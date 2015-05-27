@@ -25,9 +25,19 @@ page.open(url, function (status) {
 			var tag = tags[i];
 
 			if ( (tag.text) && (notAllowed.indexOf(tag.tagName) === -1) ) {
+				var parents = [];
+
+        var parentNode = tag.parentNode || null;
+
+				while (parentNode && parentNode.tagName !== 'HTML' && parentNode.tagName !== 'BODY') {
+					parents.push(parentNode.tagName);
+          parentNode = parentNode.parentNode || null;
+				}
+
 				content.push({
 					tag: tag.tagName,
-					text: tag.text
+					text: tag.text,
+					parents: parents
 				});
 			}
 		}
