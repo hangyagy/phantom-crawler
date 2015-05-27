@@ -9,7 +9,7 @@ if ( system.args.length < 2 ) {
 var url = system.args[1];
 
 page.onConsoleMessage = function (msg) {
-	console.log(msg);
+	//console.log(msg);
 };
 
 page.open(url, function (status) {
@@ -20,6 +20,31 @@ page.open(url, function (status) {
 		var tags = document.body.getElementsByTagName('*');
 		var notAllowed = ['SCRIPT', 'LINK'];
 		var content = [];
+
+		var titleNodes = document.getElementsByTagName('title');
+
+		var title = '';
+
+		if ( titleNodes && titleNodes.length > 0 ) {
+			title = titleNodes[0].text;
+		}
+
+		var metas = document.getElementsByTagName('meta');
+
+		var searchedMetas = ['description', 'keywords'];
+
+		var pageMetas = {};
+
+		for ( var j=0; j<metas.length; j++ ) {
+			var meta = metas[j];
+
+			var name = meta.getAttribute('name');
+
+			if ( name && searchedMetas.indexOf(name) !== -1 ) {
+				pageMetas[name] = meta.getAttribute('content');
+			}
+
+		}
 
 		for ( var i=0; i<tags.length; i++ ) {
 			var tag = tags[i];
@@ -42,7 +67,12 @@ page.open(url, function (status) {
 			}
 		}
 
-		return content;
+
+		return {
+			title: title,
+			metas: pageMetas,
+			content: content
+		};
     });
 
 	console.log(JSON.stringify(content));
