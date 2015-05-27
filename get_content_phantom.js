@@ -27,7 +27,7 @@ page.open(url, function (status) {
 			if ( (tag.text) && (notAllowed.indexOf(tag.tagName) === -1) ) {
 				var parents = [];
 
-        var parentNode = tag.parentNode || null;
+				var parentNode = tag.parentNode || null;
 
 				while (parentNode && parentNode.tagName !== 'HTML' && parentNode.tagName !== 'BODY') {
 					parents.push(parentNode.tagName);
