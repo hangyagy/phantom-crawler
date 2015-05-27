@@ -31,4 +31,6 @@ var getContent = function(url) {
 	});
 };
 
-module.exports = getContent;
+module.exports = {
+	getContent: getContent
+};

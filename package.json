@@ -1,12 +1,12 @@
 {
-  "name": "keyword-statistic",
+  "name": "phantom-crawler",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "UJLAKY Tibor <tujlaky@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "bluebird": "^2.9.26",
