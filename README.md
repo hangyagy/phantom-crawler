@@ -8,9 +8,9 @@ Get all text from an URL.
 var crawler = require('crawler');
 
 crawler.getContent(url)
-	.then(function(result) {
-	})
-	.catch(err) {
-		throw err;
-	});
+  .then(function(result) {
+  })
+  .catch(err) {
+    throw err;
+  });
 ```
